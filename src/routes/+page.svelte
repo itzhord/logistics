@@ -4,6 +4,13 @@
 	import { Card } from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import Testimonials from '$lib/components/Testimonials.svelte';
+	import truck2 from '$lib/assets/truck2.jpg';
+	import Container from '$lib/assets/container.jpg';
+	import Container2 from '$lib/assets/container2.jpg';
+	import Air from '$lib/assets/air.jpg';
+	import Ship from '$lib/assets/ship.jpg';
+	import Ship2 from '$lib/assets/ship2.jpg';
+	import Train from '$lib/assets/train.jpg';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
@@ -35,47 +42,31 @@
 		</nav>
 	</header>
 
-	<!-- Hero Section -->
-	<section class="container mx-auto px-4 py-20 text-center">
-		<h1 class="mb-8 text-5xl font-bold md:text-6xl">
-			Delivering Your Cargo<br />
-			<span class="flex items-center justify-center gap-2 text-orange-500">
-				<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-					/>
-				</svg>
-				Worldwide
-			</span>
-		</h1>
+	<!-- Hero Section (full-bleed background) -->
+	<section
+		class="w-full relative bg-cover bg-center bg-no-repeat"
+		style={`background-image: url('${truck2}')`}
+	>
+		<div class="absolute inset-0 bg-black/30" aria-hidden="true"></div>
+		<div
+			class="container mx-auto px-4 h-[90vh] flex py-20 items-center justify-center text-center relative z-10"
+		>
+			<h1 class="mb-8 text-5xl font-bold md:text-6xl lg:text-[7rem] text-white leading-tight">
+				Delivering Your Cargo<br />
+				<span class="flex items-center justify-center gap-2 text-orange-500">
+					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+						/>
+					</svg>
+					Worldwide
+				</span>
+			</h1>
 
-		<!-- (Pickup/Destination search and 360° badge removed) -->
-	</section>
-
-	<!-- Container Hero Image -->
-	<section class="container mx-auto px-4 pb-20">
-		<div class="relative overflow-hidden rounded-3xl bg-gray-900 p-12">
-			<div class="relative z-10">
-				<!-- Container visualization would go here -->
-				<div class="mx-auto h-64 w-full max-w-2xl rounded-lg bg-gray-800/50"></div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Client Logos -->
-	<section class="border-y bg-gray-50 py-8">
-		<div class="container mx-auto px-4">
-			<div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-				<span class="text-xl font-semibold">OXFAM</span>
-				<span class="text-xl font-semibold">DT Global</span>
-				<span class="text-xl font-semibold">NAYBA</span>
-				<span class="text-xl font-semibold">MOVE</span>
-				<span class="text-xl font-semibold">Winsupply</span>
-				<span class="text-xl font-semibold">FERGUSON</span>
-			</div>
+			<!-- (Pickup/Destination search and 360° badge removed) -->
 		</div>
 	</section>
 
@@ -86,10 +77,13 @@
 				<div>
 					<div class="mb-6 h-64 overflow-hidden rounded-lg bg-orange-500/20">
 						<!-- Image placeholder -->
+						<img src={Container} alt="Container" class="w-full h-full object-cover" />
 					</div>
 					<div class="grid grid-cols-2 gap-4">
-						<div class="h-32 rounded-lg bg-gray-800"></div>
-						<div class="flex h-32 items-center justify-center rounded-lg bg-orange-500">
+						<div class="h-20 rounded-lg bg-gray-800 overflow-hidden">
+							<img src={Container2} alt="Container 2" class="w-full h-full object-cover" />
+						</div>
+						<div class="flex h-20 items-center justify-center rounded-lg bg-orange-500">
 							<svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
 								<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
 							</svg>
@@ -99,7 +93,7 @@
 
 				<div class="flex flex-col justify-center">
 					<h2 class="mb-4 text-4xl font-bold">
-						<span class="text-orange-500">#1</span> Nationwide<br />
+						<span class="text-orange-500">#1</span> International<br />
 						Delivery Logistics<br />
 						Solution
 					</h2>
@@ -110,9 +104,11 @@
 					</p>
 					<div class="flex gap-4">
 						<Button class="bg-orange-500 hover:bg-orange-600">Get a Quote</Button>
-						<Button variant="outline" class="border-white text-white hover:bg-white/10">
-							Learn More
-						</Button>
+						<a href="/about">
+							<Button variant="outline" class="border-white text-black hover:bg-white/10">
+								Learn More
+							</Button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -153,7 +149,7 @@
 			<div class="grid gap-6 md:grid-cols-3">
 				<Card class="group overflow-hidden">
 					<div class="h-64 overflow-hidden rounded-t-lg bg-blue-200">
-						<!-- Sea shipping image placeholder -->
+						<img src={Ship} alt="Ship" class="w-full h-full object-cover" />
 					</div>
 					<div class="p-6">
 						<div class="mb-4 flex items-center justify-between">
@@ -176,7 +172,7 @@
 
 				<Card class="group overflow-hidden">
 					<div class="h-64 overflow-hidden rounded-t-lg bg-blue-300">
-						<!-- Air shipping image placeholder -->
+						<img src={Air} alt="Air" class="w-full h-full object-cover" />
 					</div>
 					<div class="p-6">
 						<div class="mb-4 flex items-center justify-between">
@@ -199,7 +195,7 @@
 
 				<Card class="group overflow-hidden">
 					<div class="h-64 overflow-hidden rounded-t-lg bg-orange-200">
-						<!-- Train shipping image placeholder -->
+						<img src={Train} alt="Train" class="w-full h-full object-cover" />
 					</div>
 					<div class="p-6">
 						<div class="mb-4 flex items-center justify-between">
@@ -277,7 +273,9 @@
 				</div>
 
 				<div class="flex items-center justify-center">
-					<div class="h-96 w-full rounded-2xl bg-gradient-to-br from-blue-900 to-blue-600"></div>
+					<div class="h-96 w-full rounded-4xl bg-gradient-to-br from-blue-900 to-blue-600">
+						<img src={Container} alt="Container" class="w-full h-full object-cover rounded-4xl" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -309,143 +307,58 @@
 	</section>
 
 	<!-- Tracking Section -->
-	<section id="tracking" class="bg-gray-900 py-20 text-white">
-		<div class="container mx-auto px-4">
-			<div class="grid gap-12 md:grid-cols-2">
-				<div class="relative h-96 overflow-hidden rounded-2xl bg-gray-800">
-					<!-- Tracking image placeholder -->
-				</div>
-
-				<div class="flex flex-col justify-center">
-					<h2 class="mb-8 text-4xl font-bold">
+	<section id="tracking" class="relative h-96 overflow-hidden w-[70vw] items-center flex mx-auto mb-[4rem] rounded-3xl bg-gray-800">
+		<img src={Ship2} alt="Ship" class="w-full h-full object-cover" />
+			<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center justify-center">
+				<div class="p-8 md:p-12">
+					<h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
 						Track or Calculate<br />your shipments
 					</h2>
-
-					<div class="mb-6 space-y-4">
-						<div class="flex gap-4">
-							<Button
-								variant="outline"
-								class="flex-1 border-orange-500 bg-orange-500 text-white hover:bg-orange-600"
-							>
-								Shipment Tracking
-							</Button>
-							<Button variant="outline" class="flex-1 border-white text-white hover:bg-white/10">
-								Shipment Rate
-							</Button>
-						</div>
+					<div class="mt-6 flex gap-4">
+						<button
+							class="flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2 text-sm font-medium text-white"
+						>
+							<span class="h-2 w-2 rounded-full bg-white"></span>
+							Shipment Tracking
+						</button>
+						<button
+							class="rounded-full border border-white/30 px-6 py-2 text-sm font-medium text-white/70"
+						>
+							Shipment Rate
+						</button>
 					</div>
-
-					<Card class="border-0 bg-white p-6">
-						<form method="POST" action="?/track">
-							<div class="mb-4">
+				</div>
+				<div class="flex justify-center  md:justify-end p-4">
+					<Card class="w-full max-w-md border-0 bg-white p-8 rounded-3xl shadow-2xl">
+						<h3 class="mb-6 text-center text-xl font-bold text-gray-900">
+							Quickly Track your<br />Shipments
+						</h3>
+						<form method="POST" action="?/track" class="space-y-4">
+							<div>
 								<Input
 									type="text"
 									name="code"
 									bind:value={trackingCode}
 									placeholder="Enter your shipment code"
-									class="h-12 text-base"
+									class="h-14 text-base border-gray-200 rounded-xl"
 									required
 								/>
 							</div>
 
-							<div class="mb-4">
-								<select
-									class="h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base"
-								>
-									<option>Select Your Service</option>
-									<option>Sea Shipping</option>
-									<option>Air Shipping</option>
-									<option>Train Shipping</option>
-								</select>
-							</div>
-
-							<Button type="submit" class="w-full bg-orange-500 hover:bg-orange-600">
+							<Button
+								type="submit"
+								class="w-full h-14 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-xl"
+							>
 								Track Now
 							</Button>
 						</form>
 
 						{#if form?.error}
-							<p class="mt-4 text-sm text-red-600">{form.error}</p>
+							<p class="mt-4 text-sm text-red-600 text-center">{form.error}</p>
 						{/if}
 					</Card>
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<!-- Container Facilities -->
-	<section class="py-20">
-		<div class="container mx-auto px-4">
-			<div class="mb-8 flex items-center justify-between">
-				<h2 class="text-4xl font-bold">Explore all containers<br />facilities</h2>
-				<Button variant="outline">Explore All</Button>
-			</div>
-
-			<div class="grid gap-6 md:grid-cols-3">
-				<Card>
-					<div class="h-48 overflow-hidden rounded-t-lg bg-blue-200"></div>
-					<div class="p-6">
-						<h3 class="mb-2 text-xl font-bold">40 Foot Container</h3>
-						<div class="mb-4 flex items-baseline gap-2">
-							<span class="text-2xl font-bold">$2,400</span>
-							<span class="text-sm text-gray-600">/Per year</span>
-						</div>
-						<Button variant="outline" class="w-full">
-							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-								/>
-							</svg>
-						</Button>
-					</div>
-				</Card>
-
-				<Card class="border-orange-500">
-					<div class="h-48 overflow-hidden rounded-t-lg bg-orange-200"></div>
-					<div class="p-6">
-						<h3 class="mb-2 text-xl font-bold">80 Foot Container</h3>
-						<div class="mb-4 flex items-baseline gap-2">
-							<span class="text-2xl font-bold">$2,400</span>
-							<span class="text-sm text-gray-600">/Per year</span>
-						</div>
-						<Button class="w-full bg-orange-500 hover:bg-orange-600">
-							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-								/>
-							</svg>
-						</Button>
-					</div>
-				</Card>
-
-				<Card>
-					<div class="h-48 overflow-hidden rounded-t-lg bg-yellow-200"></div>
-					<div class="p-6">
-						<h3 class="mb-2 text-xl font-bold">20 Foot Container</h3>
-						<div class="mb-4 flex items-baseline gap-2">
-							<span class="text-2xl font-bold">$2,400</span>
-							<span class="text-sm text-gray-600">/Per year</span>
-						</div>
-						<Button variant="outline" class="w-full">
-							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-								/>
-							</svg>
-						</Button>
-					</div>
-				</Card>
-			</div>
-		</div>
 	</section>
 
 	<!-- CTA Section -->
@@ -456,7 +369,6 @@
 			</h2>
 			<div class="flex justify-center gap-4">
 				<Button class="bg-orange-500 hover:bg-orange-600">Track Parcel</Button>
-				<Button variant="outline">Download App</Button>
 			</div>
 		</div>
 	</section>
@@ -504,11 +416,7 @@
 				<div>
 					<h3 class="mb-4 font-semibold">Join our newsletter</h3>
 					<div class="flex gap-2">
-						<Input
-							type="email"
-							placeholder="Enter email address"
-							class="bg-gray-800 text-white"
-						/>
+						<Input type="email" placeholder="Enter email address" class="bg-gray-800 text-white" />
 						<Button class="bg-orange-500 hover:bg-orange-600">
 							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
@@ -546,7 +454,9 @@
 							class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 hover:border-orange-500"
 						>
 							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+								<path
+									d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+								/>
 								<circle cx="4" cy="4" r="2" />
 							</svg>
 						</a>
